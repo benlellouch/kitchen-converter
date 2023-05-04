@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B668A42A03D164006DACB2 /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B668A32A03D164006DACB2 /* NumbersOnlyViewModifier.swift */; };
 		11FB2C032A028A15000379D4 /* Kitchen_ConverterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB2C022A028A15000379D4 /* Kitchen_ConverterApp.swift */; };
 		11FB2C052A028A15000379D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB2C042A028A15000379D4 /* ContentView.swift */; };
 		11FB2C072A028A17000379D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11FB2C062A028A17000379D4 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11B668A32A03D164006DACB2 /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		11FB2BFF2A028A15000379D4 /* Kitchen Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FB2C022A028A15000379D4 /* Kitchen_ConverterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kitchen_ConverterApp.swift; sourceTree = "<group>"; };
 		11FB2C042A028A15000379D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				11FB2C042A028A15000379D4 /* ContentView.swift */,
 				11FB2C062A028A17000379D4 /* Assets.xcassets */,
 				11FB2C082A028A17000379D4 /* Preview Content */,
+				11B668A32A03D164006DACB2 /* NumbersOnlyViewModifier.swift */,
 			);
 			path = "Kitchen Converter";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				11FB2C052A028A15000379D4 /* ContentView.swift in Sources */,
 				11FB2C032A028A15000379D4 /* Kitchen_ConverterApp.swift in Sources */,
+				11B668A42A03D164006DACB2 /* NumbersOnlyViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
