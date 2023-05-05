@@ -23,30 +23,31 @@ struct ContentView: View {
     static let units = [
         Unit(name:"Grams", symbol: "g", type:[UnitType.mass]),
         Unit(name:"Ounces", symbol: "oz", type:[UnitType.mass]),
+        Unit(name:"Pound", symbol: "lb", type:[UnitType.mass]),
         Unit(name: "Fluid Ounces", symbol: "fl oz", type: [UnitType.vol]),
         Unit(name: "Milliliters", symbol: "ml", type: [UnitType.vol]),
-        Unit(name: "Celsius", symbol: "°C", type: [UnitType.temp]),
-        Unit(name: "Farenheit", symbol: "°F", type: [UnitType.temp]),
         Unit(name: "Butter Sticks", symbol: "stick", type: [UnitType.vol, UnitType.mass]),
         Unit(name: "Tablespoon", symbol: "tbsp", type: [UnitType.vol]),
         Unit(name: "Cup", symbol: "cup", type: [UnitType.vol]),
-        Unit(name: "Teaspoon", symbol: "tsp", type: [UnitType.vol])
+        Unit(name: "Teaspoon", symbol: "tsp", type: [UnitType.vol]),
+        Unit(name: "Celsius", symbol: "°C", type: [UnitType.temp]),
+        Unit(name: "Farenheit", symbol: "°F", type: [UnitType.temp])
         
         
     ]
     
     static let conversions: [String:[String:(Double) -> Double]] = [
-        "g": ["oz":{x in x * 0.035274}, "stick":{x in x * (1/113)}],
-        "stick": ["g": {x in x * 113}, "oz": {x in x * 113 * 0.035274}, "cup": {x in x/2}, "tbsp": {x in x * 8}, "fl oz": {x in x * 4}, "ml":{x in x * 111.294}],
-        "oz": ["g":{x in x * (1/0.035274)}, "stick":{x in x * (1/0.035274) * (1/113)}],
-        "ml": ["fl oz":{x in x * 0.033814}, "cup":{x in x * 0.00422675}, "tbsp": {x in x * 0.067628}],
-        "fl oz": ["ml":{x in x * (1/0.033814)}, "cup": {x in x * 1/8}, "tbps": {x in x * 2}, "stick":{x in x/4}],
+        "g": ["oz":{x in x * 0.035274}, "stick":{x in x * (1/113)}, "lb":{x in x * 0.00220462}],
+        "stick": ["g": {x in x * 113}, "oz": {x in x * 4}, "cup": {x in x/2}, "tbsp": {x in x * 8}, "fl oz": {x in x * 4}, "ml":{x in x * 111.294}, "tsp": {x in x * 24}, "lb" : {x in x/4}],
+        "oz": ["g":{x in x * (1/0.035274)}, "stick":{x in x * (1/4)}, "lb": {x in x/16}],
+        "ml": ["fl oz":{x in x * 0.033814}, "cup":{x in x * 0.00422675}, "tbsp": {x in x * 0.067628}, "stick":{x in x * 0.067628 * 1/8}, "tsp":{x in x * 0.067628 * 3}],
+        "fl oz": ["ml":{x in x * (1/0.033814)}, "cup": {x in x * 1/8}, "tbsp": {x in x * 2}, "stick":{x in x/4}, "tsp": {x in x * 6}],
         "°C": ["°F":{x in (x * 9/5) + 32.0}],
         "°F": ["°C":{x in (x - 32) * 5/9}],
-        "tbsp": ["ml": {x in x * (1/0.067628)} ,"cup": {x in x * 1/16}, "fl oz": {x in x * 0.5}, "stick" : {x in x/8} ],
-        "tsp": ["tbsp": {x in x/3}],
-        "cup": ["ml": {x in x * (1/0.00422675)}, "tbsp": {x in x * 16}, "fl oz": {x in x * 8}, "stick" : {x in x*2}]
-        
+        "tbsp": ["ml": {x in x * (1/0.067628)} ,"cup": {x in x * 1/16}, "fl oz": {x in x * 0.5}, "stick" : {x in x/8}, "tsp": {x in x * 3}],
+        "tsp": ["tbsp": {x in x/3},"ml": {x in x * (1/0.067628) * 1/3} ,"cup": {x in x * 1/48}, "fl oz": {x in x * 1/6}, "stick" : {x in x/8 * 1/3}],
+        "cup": ["ml": {x in x * (1/0.00422675)}, "tbsp": {x in x * 16}, "fl oz": {x in x * 8}, "stick" : {x in x*2}, "tsp": {x in x * 48}],
+        "lb": ["g": {x in x * (1/0.00220462)}, "oz" : {x in x * 16}, "stick": {x in x * 4}]
     ]
     @State private var from: Unit = units[0]
     @State private var to: Unit = units[1]
