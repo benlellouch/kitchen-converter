@@ -51,6 +51,7 @@ struct ContentView: View {
     @State private var from: Unit = units[0]
     @State private var to: Unit = units[1]
     @State private var input: String = "0"
+    @FocusState private var inputFocus: Bool
     private var output: Double {
         return ((ContentView.conversions[from.symbol]?[to.symbol] ?? {x in 0})(Double(input) ?? 0))
     }
@@ -74,8 +75,15 @@ struct ContentView: View {
         
     var body: some View {
         VStack {
-            Text("Unit Converter")
-                .font(.title)
+            VStack{
+                Text("Unit Converter")
+                                .font(.largeTitle)
+                                .fontWeight(.black)
+                Text("Kitchen Essentials")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+            }
+            
             Spacer()
             VStack{
                 
@@ -89,7 +97,7 @@ struct ContentView: View {
                             Text(unit.symbol).tag(unit)
                         }
                         
-                    }.onChange(of: from, perform: {value in if (from.type != to.type || from.name == to.name ) {to = filteredUnits[0] }}).frame(width: 80)
+                    }.onChange(of: from, perform: {value in if (from.type != to.type || from.name == to.name ) {to = filteredUnits[0] }}).frame(width: 80).pickerStyle(.inline)
                     
                     Text("➡️")
                     Text("To")
@@ -98,10 +106,14 @@ struct ContentView: View {
                         ForEach(filteredUnits){ unit in
                             Text(unit.symbol).tag(unit)
                         }
-                    }.frame(width: 80)
+                    }.frame(width: 80).pickerStyle(.inline)
                 }.padding()
                 HStack {
-                    TextField("", text: $input).numbersOnly($input, includeDecimal: true).textFieldStyle(.roundedBorder).frame(minWidth: 50,idealWidth: 50,maxWidth:70)
+                    TextField("", text: $input).numbersOnly($input, includeDecimal: true)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(minWidth: 50,idealWidth: 50,maxWidth:70)
+                        .focused($inputFocus)
+                    
                     Text("\(from.symbol)")
                         .font(.headline)
 
@@ -118,10 +130,12 @@ struct ContentView: View {
                 }
             }.padding()
             Spacer()
-            VStack{Text("Made with ♥️ for Mamou")}.frame(alignment: .bottom)
+            Spacer()
+            VStack{Text("Made with ♥️ for Mamou").font(.footnote)}.frame(alignment: .bottom)
             
         }
         .padding()
+        .onTapGesture(perform: {inputFocus = false})
     }
     
 }
