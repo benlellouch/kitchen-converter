@@ -73,13 +73,13 @@ struct ContentView: View {
         }
         return fs
     }
-        
+    
     var body: some View {
         VStack {
             VStack{
                 Text("Unit Converter")
-                                .font(.largeTitle)
-                                .fontWeight(.black)
+                    .font(.largeTitle)
+                    .fontWeight(.black)
                 Text("Kitchen Essentials")
                     .font(.title3)
                     .fontWeight(.semibold)
@@ -91,7 +91,7 @@ struct ContentView: View {
                 HStack{
                     Text("From")
                         .font(.headline)
-
+                    
                     
                     Picker("From",selection: $from) {
                         ForEach(ContentView.units){ unit in
@@ -117,9 +117,9 @@ struct ContentView: View {
                     
                     Text("\(from.symbol)")
                         .font(.headline)
-
+                    
                     Text("➡️")
-
+                    
                     Text("\( String(format: "%.2f", output))").padding(6)
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
@@ -127,7 +127,7 @@ struct ContentView: View {
                         )
                     Text("\(to.symbol)")
                         .font(.headline)
-
+                    
                 }
             }.padding()
             Spacer()
